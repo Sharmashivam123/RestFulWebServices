@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class User {
@@ -15,7 +17,11 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@NotBlank
+	@Size(min = 2, message = "size must be grater than 2")
 	private String username;
+	@NotBlank
+	@Size(min = 2, message = "size must be grater than 2")
 	private String phone;
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Post> postList;
